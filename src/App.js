@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import Login from "./Login";
+import "./App.css";
+import "antd/dist/reset.css";
+import { Routes, Route } from "react-router-dom";
+import ErrorComponent from "./ErrorComponent";
+import RegistrationComponent from "./RegistrationComponent";
+import Layout from "./Layout";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Login />} />
+          {/*route does not have a path but has an index attribute. 
+          That specifies this route as the default route for the parent route, which is /. */}
+          <Route path="register" element={<RegistrationComponent />} />
+          <Route path="*" element={<ErrorComponent />} />
+        </Route>
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
