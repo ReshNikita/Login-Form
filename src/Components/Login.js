@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Input, Form, Checkbox } from "antd";
-import "../Styles/login.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Button, Input, Form, Checkbox } from "antd";
+
+import "../Styles/login.css";
 
 const Login = () => {
   const [username, setUserName] = useState("");
@@ -13,17 +14,17 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     try {
-      await axios
-        .post("https://reqres.in/api/users", { username, password })
-        .then((response) => {
-          console.log(response.status, response.data);
-        });
+      const { status, data } = await axios.post(process.env.REACT_APP_URL, {
+        username,
+        password,
+      });
+
+      console.log(status, data);
 
       setSuccess(true);
     } catch (error) {
       console.log(error);
     }
-    return false;
   };
 
   useEffect(() => {
@@ -49,7 +50,8 @@ const Login = () => {
         <section className="signInSection">
           <h1 className="section__header">Login</h1>
           <Form
-            onFinish={handleSubmit}
+            onFinish={(e) => handleSubmit(e)}
+            onSubmit={(e) => e.preventDefault()}
             name="basic"
             style={{
               maxWidth: 600,

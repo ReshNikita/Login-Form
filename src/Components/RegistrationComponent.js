@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   Button,
   Form,
@@ -9,9 +11,8 @@ import {
   Radio,
   Col,
 } from "antd";
+
 import "../Styles/Registration.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
 
 const { Option } = Select;
 
@@ -46,25 +47,23 @@ const RegistrationComponent = () => {
 
   const handleSubmit = async (e) => {
     try {
-      await axios
-        .post("https://reqres.in/api/users", {
-          username,
-          password,
-          nickname,
-          userEmail,
-          language,
-          hasVPN,
-          gender,
-          age,
-        })
-        .then((response) => {
-          console.log(response.status, response.data);
-        });
+      const { status, data } = await axios.post(process.env.REACT_APP_URL, {
+        username,
+        password,
+        nickname,
+        userEmail,
+        language,
+        hasVPN,
+        gender,
+        age,
+      });
+
+      console.log(status, data);
+
       setSuccess(true);
     } catch (error) {
       console.log(error);
     }
-    return false;
   };
 
   useEffect(() => {
@@ -98,7 +97,8 @@ const RegistrationComponent = () => {
             <Form
               {...layout}
               name="nest-messages"
-              onFinish={handleSubmit}
+              onFinish={(e) => handleSubmit(e)}
+              onSubmit={(e) => e.preventDefault()}
               style={{
                 maxWidth: 600,
               }}
