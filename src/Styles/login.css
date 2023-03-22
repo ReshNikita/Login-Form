@@ -1,6 +1,46 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&display=swap");
-/*  font-family: "Caveat", cursive;*/
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+.BackHomeButton {
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #f09819;
+  background-image: linear-gradient(
+    45deg,
+    #ff512f 0%,
+    #f09819 51%,
+    #ff512f 100%
+  );
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  text-decoration: none;
+}
+
+.BackHomeButton:hover {
+  background-position: right center;
+  color: #fff;
+}
+
+.BackHomeButton:active {
+  transform: scale(0.95);
+}
+
+.blockBackHomeButton {
+  padding: 20px;
+  display: block;
+  position: absolute;
+}
 
 .signInSection {
   background-image: linear-gradient(to bottom right, #c0b3df, #471153);
@@ -25,35 +65,6 @@
   color: #fdfdfe;
   text-shadow: 0px 0px 5px #9051cf, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
     0px 0px 20px #b393d3;
-}
-
-.formInput {
-  max-width: 320px;
-  min-height: 35px;
-}
-
-@media (max-width: 855px) {
-  .formInput {
-    width: 250px;
-  }
-}
-
-@media (max-width: 785px) {
-  .formInput {
-    width: 200px;
-  }
-}
-
-@media (max-width: 734px) {
-  .formInput {
-    width: 150px;
-  }
-}
-
-@media (max-width: 572px) {
-  .formInput {
-    width: 100%;
-  }
 }
 
 .section__buttonBlock {
@@ -94,7 +105,7 @@
 
 @media (max-width: 768px) {
   .section__buttonLogin {
-    font-size: 24px;
+    font-size: 19px;
     min-width: 196px;
   }
 }
