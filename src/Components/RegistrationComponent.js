@@ -12,7 +12,7 @@ import {
   Col,
 } from "antd";
 
-import "../Styles/Registration.css";
+import "../Registration.css";
 
 const { Option } = Select;
 

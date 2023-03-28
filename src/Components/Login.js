@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button, Input, Form, Checkbox } from "antd";
 
-import "../Styles/login.css";
+import "../login.css";
 
 const Login = () => {
   const [username, setUserName] = useState("");
